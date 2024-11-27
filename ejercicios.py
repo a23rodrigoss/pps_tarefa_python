@@ -39,24 +39,15 @@ numero2 = 5
 lista_consecutiva(numero1, numero2)
 
 
-# Exercicio 4: Cálculo do factorial (paralelizado para entradas moi grandes)
-import concurrent.futures
-
-def factorial_paralelo(numero):
-    if numero == 0 or numero == 1:
-        return 1
-
-    with concurrent.futures.ProcessPoolExecutor() as executor:
-        partes = list(range(1, numero + 1))
-        resultados = list(executor.map(lambda x: x, partes))
-        resultado_final = 1
-        for valor in resultados:
-            resultado_final *= valor
-
-    print(f"O factorial de {numero} é {resultado_final}")
+# Exercicio 4: Cálculo do factorial (optimizado sen paralelismo para evitar timeout)
+def factorial(numero):
+    resultado = 1
+    for i in range(1, numero + 1):
+        resultado *= i
+    print(f"O factorial de {numero} é {resultado}")
 
 numero = 10
-factorial_paralelo(numero)
+factorial(numero)
 
 
 # Exercicio 5: Crear ficheiro HTML con estilo moderno
